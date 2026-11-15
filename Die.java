@@ -1,3 +1,4 @@
+package Yahtzee;
 
 public class Die {
 	// instance variables

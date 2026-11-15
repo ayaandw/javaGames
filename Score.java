@@ -3,7 +3,7 @@ package Yahtzee;
 public abstract class Score {
     private String name;
     private int val;
-    private boolean isUsed;
+    private boolean used;
 
     public abstract int calculateScore(int[] vals);
 
@@ -28,10 +28,10 @@ public abstract class Score {
     }
 
     public boolean isUsed() {
-        return isUsed;
+        return used;
     }
 
-    public void used() {
-        isUsed = true;
+    public void setUsed(boolean used) {
+        this.used = used;
     }
 }

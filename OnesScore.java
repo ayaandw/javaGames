@@ -13,7 +13,6 @@ public class OnesScore extends Score {
                 count++;
             }
         }
-        used();
         return count;
     }
 }
