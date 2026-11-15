@@ -8,7 +8,7 @@ public class YahtzeeGame {
 		new OnesScore("Ones"), new TwosScore("Twos"), new ThreesScore("Threes"), new FoursScore("Fours"),
 		new FivesScore("Fives"), new SixesScore("Sixes"), new ThreeOfAKindScore("3 of a Kind"),
 		new FourOfAKindScore("4 of a Kind"), new SmallStraightScore("Small Straight"), new LargeStraightScore("Large Straight"),
-		new FullHouseScore("Full House Score"), new YahtzeeScore("Yahtzee Score"), new ChanceScore("Chance Score")
+		new FullHouseScore("Full House"), new YahtzeeScore("Yahtzee"), new ChanceScore("Chance")
 	};
 
 	//methods

@@ -1,5 +1,5 @@
 package Yahtzee;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class FourOfAKindScore extends Score {
     public FourOfAKindScore(String name) {
@@ -7,20 +7,16 @@ public class FourOfAKindScore extends Score {
     }
 
     public int calculateScore(int[] vals) {
-        int count = 1;
+        HashMap<Integer, Integer> counts = new HashMap<>();
         int sum = 0;
-        Arrays.sort(vals);
-        for(int i = 0; i < vals.length; i++) {
-            sum += vals[i];
-            if(i == 3) {
-                continue;
-            }
-            if(vals[i] == vals[2]) {
-                count++;
-            }
+        for (int v : vals) {
+            sum += v;
+            counts.put(v, counts.getOrDefault(v, 0) + 1);
         }
-        if(count >= 4) {
-            return sum;
+        for(int count : counts.values()) {
+            if(count >= 4) {
+                return sum;
+            }
         }
         return 0;
     }

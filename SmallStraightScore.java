@@ -1,5 +1,4 @@
 package Yahtzee;
-import java.util.Arrays;
 
 public class SmallStraightScore extends Score {
     public SmallStraightScore(String name) {
@@ -7,13 +6,17 @@ public class SmallStraightScore extends Score {
     }
 
     public int calculateScore(int[] vals) {
-        Arrays.sort(vals);
-        //2,2,3,4,6
-        for(int i = 0; i < 3; i++) {
-            if(vals[i] + 1 == vals[i+1] && vals[i+1] == vals[i+2] - 1 && vals[i+2] == vals[i+3] - 1) {
-                return 30;
+        boolean[] present = new boolean[7];
+        for (int v : vals) {
+            if (v >= 1 && v <= 6) {
+                present[v] = true;
             }
         }
+        if((present[1] && present[2] && present[3] && present[4]) ||
+           (present[2] && present[3] && present[4] && present[5]) ||
+           (present[3] && present[4] && present[5] && present[6])) {
+            return 30;
+           }
         return 0;
     }
 }
