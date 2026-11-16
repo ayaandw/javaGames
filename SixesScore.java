@@ -7,10 +7,8 @@ public class SixesScore extends Score {
 
     public int calculateScore(int[] vals) {
         int count = 0;
-        for(int i = 0; i < vals.length; i++) {
-            if(vals[i] == 6) {
-                count += 6;
-            }
+        for(int v : vals) {
+            if (v == 6) count += 6;
         }
         return count;
     }

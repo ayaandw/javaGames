@@ -7,10 +7,8 @@ public class FivesScore extends Score {
 
     public int calculateScore(int[] vals) {
         int count = 0;
-        for(int i = 0; i < vals.length; i++) {
-            if(vals[i] == 5) {
-                count += 5;
-            }
+        for (int v : vals) {
+            if (v == 5) count += 5;
         }
         return count;
     }

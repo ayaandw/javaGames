@@ -7,8 +7,8 @@ public class ChanceScore extends Score {
 
     public int calculateScore(int[] vals) {
         int sum = 0;
-        for(int i = 0; i < vals.length; i++) {
-            sum += vals[i];
+        for (int v : vals) {
+            sum += v;
         }
         return sum;
     }

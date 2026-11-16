@@ -8,10 +8,8 @@ public class OnesScore extends Score {
 
     public int calculateScore(int[] vals) {
         int count = 0;
-        for(int i = 0; i < vals.length; i++) {
-            if(vals[i] == 1) {
-                count++;
-            }
+        for (int v : vals) {
+            if (v == 1) count++;
         }
         return count;
     }

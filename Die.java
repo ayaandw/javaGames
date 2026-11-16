@@ -7,8 +7,7 @@ public class Die {
 	
 	// constructors
 	public Die() {
-		numSides = 6;
-		roll();
+		this(6);
 	}
 	
 	public Die(int numSides) {
