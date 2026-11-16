@@ -17,16 +17,15 @@ public class YahtzeeDice {
 
 	public int roll() {
 		int sumDice = 0;
-		for(int i = 0; i < dice.length; i++) {
-			
-			sumDice += dice[i].roll();
+		for (Die d : dice) {
+			sumDice += d.roll();
 		}
 		return sumDice;
 	}
 	public int roll(boolean[] holds) {
 		int sumDice = 0;
 		for(int i = 0; i < dice.length; i++) {
-			if(holds[i] == false) {
+			if(!holds[i]) {
 				sumDice += dice[i].roll();
 			}
 		}

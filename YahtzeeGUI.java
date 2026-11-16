@@ -86,6 +86,11 @@ public class YahtzeeGUI extends JFrame {
         rollCPanel.add(rollButton);
         center.add(rollCPanel);
         add(center, BorderLayout.CENTER);
+        
+        JButton leaderboard = new JButton(" Leaderboard");
+        leaderboard.setFont(new Font("Arial", Font.BOLD, 12));
+        leaderboard.addActionListener(e -> showLeaderboard());
+        rollCPanel.add(leaderboard);
 
         JPanel right = new JPanel();
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
@@ -131,6 +136,20 @@ public class YahtzeeGUI extends JFrame {
 
         add(right, BorderLayout.EAST);
         resetRound();
+    }
+
+    private void showLeaderboard() {
+        java.util.List<Leaderboard.Entry> scores = Leaderboard.loadScores();
+        StringBuilder sb = new StringBuilder("Top 5 Scores\n\n");
+        if (scores.isEmpty()) {
+            sb.append("No high scores recorded yet.");
+        } else {
+            int rank = 1;
+            for (Leaderboard.Entry entry : scores) {
+                sb.append(String.format("%d %-15s : %d pts\n", rank++, entry.name, entry.score));
+            }
+        }
+        JOptionPane.showMessageDialog(this, sb.toString(), "Yahtzee Leaderboard", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private int calcUpperBonus() {
@@ -269,7 +288,18 @@ public class YahtzeeGUI extends JFrame {
         } else {
             roundLabel.setText("Game Over");
             statusLabel.setText("Game Over! Final Score: " + total);
-            JOptionPane.showMessageDialog(this, "Game Over! Your final score is: " + total, "Victory!", JOptionPane.INFORMATION_MESSAGE);
+
+            String playerName = JOptionPane.showInputDialog(
+                this,
+                "Game Over! Your final score is: " + total + "\nEnter your name for the leaderboard:",
+                "New High Score!",
+                JOptionPane.QUESTION_MESSAGE
+            );
+            if (playerName != null && !playerName.trim().isEmpty()) {
+                Leaderboard.addScore(playerName.trim(), total);
+            }
+            showLeaderboard();
+
             rollButton.setEnabled(false);
             for (JButton button : scoreButtons) button.setEnabled(false);
         }
